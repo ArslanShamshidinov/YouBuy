@@ -1,30 +1,20 @@
 package com.ars.YouBuy.order.dto;
 
 import com.ars.YouBuy.order.entity.OrderItem;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 import java.time.ZonedDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
 @Getter
-@RequiredArgsConstructor
+@AllArgsConstructor
 @Builder
 public class OrderResponse {
-    @NonNull
     private Integer id;
-
-    @NonNull
     private ZonedDateTime created;
-
-    @NonNull
     private Integer userId;
-    @NonNull
+    @Builder.Default
     private Set<OrderItem> items = new HashSet<>();
-
-    @NonNull
     private Integer shippingId;
 }

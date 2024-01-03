@@ -7,11 +7,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Getter
-@RequiredArgsConstructor
+@AllArgsConstructor
 @Builder
 public class ShoppingCartResponse {
-    @NonNull
     private Integer id;
-    @NonNull
+    @Builder.Default
     private Set<ShoppingCartItem> items = new HashSet<>();
 }

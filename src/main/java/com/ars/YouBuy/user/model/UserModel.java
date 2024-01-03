@@ -8,21 +8,21 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Getter
-@RequiredArgsConstructor
+@AllArgsConstructor
 @Builder
 public class UserModel {
-    @NonNull
+    
     private Integer id;
-    @NonNull
+    
     private ZonedDateTime created;
-    @NonNull
+    
     private String name;
-    @NonNull
+    
     private String surname;
-    @NonNull
+    
     private String email;
-    @NonNull
+    
     private String password;
-    @NonNull
+    @Builder.Default
     private Set<Role> roles = new HashSet<>();
 }

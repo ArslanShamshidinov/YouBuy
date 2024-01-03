@@ -1,27 +1,24 @@
 package com.ars.YouBuy.shopingcart.entity;
 
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name = "shopping_cart")
-@RequiredArgsConstructor
+@AllArgsConstructor
 @Builder
 @Getter
 public class ShoppingCart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NonNull
     private Integer id;
+
     @OneToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "cart_item", joinColumns = @JoinColumn(name = "cart_id"),
             inverseJoinColumns = @JoinColumn(name = "item_id"))
-    @NonNull
+    @Builder.Default
     private Set<ShoppingCartItem> items = new HashSet<>();
 }

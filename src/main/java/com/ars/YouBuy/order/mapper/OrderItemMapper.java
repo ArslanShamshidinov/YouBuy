@@ -3,7 +3,9 @@ package com.ars.YouBuy.order.mapper;
 import com.ars.YouBuy.order.dto.OrderItemResponse;
 import com.ars.YouBuy.order.entity.OrderItem;
 import com.ars.YouBuy.order.model.OrderItemModel;
+import org.springframework.stereotype.Component;
 
+@Component
 public class OrderItemMapper {
     public OrderItemModel entityToModel(OrderItem orderItem){
         return OrderItemModel.builder()
