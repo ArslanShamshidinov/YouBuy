@@ -6,7 +6,7 @@ import lombok.Builder;
 import lombok.Getter;
 
 @Entity
-@Table(name = "category.sql")
+@Table(name = "category")
 @AllArgsConstructor
 @Getter
 @Builder
