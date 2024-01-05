@@ -26,7 +26,7 @@ public class ProductMapper {
                 .build();
     }
 
-    public ProductResponse modelToDto(ProductModel product){
+    public static ProductResponse modelToDto(ProductModel product){
         return ProductResponse.builder()
                 .id(product.getId())
                 .name(product.getName())

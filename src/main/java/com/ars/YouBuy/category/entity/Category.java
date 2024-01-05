@@ -1,14 +1,13 @@
 package com.ars.YouBuy.category.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
+import lombok.*;
 
 @Entity
 @Table(name = "category")
 @AllArgsConstructor
 @Getter
+@NoArgsConstructor
 @Builder
 public class Category {
     @Id

@@ -2,7 +2,7 @@
 
 -- changeset Arslan-Shamshidinov:create-category-table
 -- preconditions onFail:MARK_RAN
--- precondition-sql-check expectedResult:0 select count(*) from information_schema.TABLES where TABLE_NAME='youbuy.category';
+-- precondition-sql-check expectedResult:0 select count(*) from information_schema.TABLES WHERE TABLE_SCHEMA = 'youbuy' AND TABLE_NAME='category';
 CREATE TABLE `youbuy`.`category` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(255) NOT NULL,
@@ -10,7 +10,7 @@ CREATE TABLE `youbuy`.`category` (
 
 -- changeset Arslan-Shamshidinov:create-product-table
 -- preconditions onFail:MARK_RAN
--- precondition-sql-check expectedResult:0 select count(*) from information_schema.TABLES where TABLE_NAME='youbuy.product';
+-- precondition-sql-check expectedResult:0 select count(*) from information_schema.TABLES WHERE TABLE_SCHEMA = 'youbuy' AND TABLE_NAME='product';
 CREATE TABLE `youbuy`.`product` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(255) NOT NULL,
@@ -21,7 +21,7 @@ CREATE TABLE `youbuy`.`product` (
 
 -- changeset Arslan-Shamshidinov:create-order-table
 -- preconditions onFail:MARK_RAN
--- precondition-sql-check expectedResult:0 select count(*) from information_schema.TABLES where TABLE_NAME='youbuy.order';
+-- precondition-sql-check expectedResult:0 select count(*) from information_schema.TABLES WHERE TABLE_SCHEMA = 'youbuy' AND TABLE_NAME='order';
 CREATE TABLE `youbuy`.`order` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `created` DATETIME NOT NULL,
@@ -31,7 +31,7 @@ CREATE TABLE `youbuy`.`order` (
 
 -- changeset Arslan-Shamshidinov:create-order-item-table
 -- preconditions onFail:MARK_RAN
--- precondition-sql-check expectedResult:0 select count(*) from information_schema.TABLES where TABLE_NAME='youbuy.order_item';
+-- precondition-sql-check expectedResult:0 select count(*) from information_schema.TABLES WHERE TABLE_SCHEMA = 'youbuy' AND TABLE_NAME='order_item';
 CREATE TABLE `youbuy`.`order_item` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `quantity` INT NOT NULL,
@@ -41,7 +41,7 @@ CREATE TABLE `youbuy`.`order_item` (
 
 -- changeset Arslan-Shamshidinov:create-order-items-table
 -- preconditions onFail:MARK_RAN
--- precondition-sql-check expectedResult:0 select count(*) from information_schema.TABLES where TABLE_NAME='youbuy.order_items';
+-- precondition-sql-check expectedResult:0 select count(*) from information_schema.TABLES WHERE TABLE_SCHEMA = 'youbuy' AND TABLE_NAME='order_items';
  CREATE TABLE `youbuy`.`order_items` (
       `item_id` INT NOT NULL,
       `order_id` INT NOT NULL,
@@ -60,14 +60,15 @@ CREATE TABLE `youbuy`.`order_item` (
 
 -- changeset Arslan-Shamshidinov:create-shopping-cart-table
 -- preconditions onFail:MARK_RAN
--- precondition-sql-check expectedResult:0 select count(*) from information_schema.TABLES where TABLE_NAME='youbuy.shopping_cart';
+-- precondition-sql-check expectedResult:0 select count(*) from information_schema.TABLES WHERE TABLE_SCHEMA = 'youbuy' AND TABLE_NAME='shopping_cart';
 CREATE TABLE `youbuy`.`shopping_cart` (
   `id` INT NOT NULL AUTO_INCREMENT,
+  `created` DATETIME NOT NULL,
   PRIMARY KEY (`id`));
 
 -- changeset Arslan-Shamshidinov:create-shopping-cart-item-table
 -- preconditions onFail:MARK_RAN
--- precondition-sql-check expectedResult:0 select count(*) from information_schema.TABLES where TABLE_NAME='youbuy.shopping_cart_item';
+-- precondition-sql-check expectedResult:0 select count(*) from information_schema.TABLES WHERE TABLE_SCHEMA = 'youbuy' AND TABLE_NAME='shopping_cart_item';
 CREATE TABLE `youbuy`.`shopping_cart_item` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `quantity` INT NOT NULL,
@@ -76,7 +77,7 @@ CREATE TABLE `youbuy`.`shopping_cart_item` (
 
 -- changeset Arslan-Shamshidinov:create-cart-items-table
 -- preconditions onFail:MARK_RAN
--- precondition-sql-check expectedResult:0 select count(*) from information_schema.TABLES where TABLE_NAME='youbuy.cart_items';
+-- precondition-sql-check expectedResult:0 select count(*) from information_schema.TABLES WHERE TABLE_SCHEMA = 'youbuy' AND TABLE_NAME='cart_items';
  CREATE TABLE `youbuy`.`cart_items` (
       `cart_item_id` INT NOT NULL,
       `cart_id` INT NOT NULL,
@@ -95,7 +96,7 @@ CREATE TABLE `youbuy`.`shopping_cart_item` (
 
 -- changeset Arslan-Shamshidinov:create-shipping-table
 -- preconditions onFail:MARK_RAN
--- precondition-sql-check expectedResult:0 select count(*) from information_schema.TABLES where TABLE_NAME='youbuy.shipping';
+-- precondition-sql-check expectedResult:0 select count(*) from information_schema.TABLES WHERE TABLE_SCHEMA = 'youbuy' AND TABLE_NAME='shipping';
 CREATE TABLE `youbuy`.`shipping` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(255) NULL,
@@ -106,7 +107,7 @@ CREATE TABLE `youbuy`.`shipping` (
 
 -- changeset Arslan-Shamshidinov:create-role-table
 -- preconditions onFail:MARK_RAN
--- precondition-sql-check expectedResult:0 select count(*) from information_schema.TABLES where TABLE_NAME='youbuy.role';
+-- precondition-sql-check expectedResult:0 select count(*) from information_schema.TABLES WHERE TABLE_SCHEMA = 'youbuy' AND TABLE_NAME='role';
 CREATE TABLE `youbuy`.`role` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(255) NOT NULL,
@@ -114,7 +115,7 @@ CREATE TABLE `youbuy`.`role` (
 
 -- changeset Arslan-Shamshidinov:create-user-table
 -- preconditions onFail:MARK_RAN
--- precondition-sql-check expectedResult:0 select count(*) from information_schema.TABLES where TABLE_NAME='youbuy.user';
+-- precondition-sql-check expectedResult:0 select count(*) from information_schema.TABLES WHERE TABLE_SCHEMA = 'youbuy' AND TABLE_NAME='user';
 CREATE TABLE `youbuy`.`user` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `created` DATETIME NOT NULL,
@@ -126,7 +127,7 @@ CREATE TABLE `youbuy`.`user` (
 
 -- changeset Arslan-Shamshidinov:create-user_roles-table
 -- preconditions onFail:MARK_RAN
--- precondition-sql-check expectedResult:0 select count(*) from information_schema.TABLES where TABLE_NAME='youbuy.user_roles';
+-- precondition-sql-check expectedResult:0 select count(*) from information_schema.TABLES WHERE TABLE_SCHEMA = 'youbuy' AND TABLE_NAME='user_roles';
  CREATE TABLE `youbuy`.`user_roles` (
       `user_id` INT NOT NULL,
       `role_id` INT NOT NULL,
