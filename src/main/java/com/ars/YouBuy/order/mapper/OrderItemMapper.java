@@ -1,6 +1,6 @@
 package com.ars.YouBuy.order.mapper;
 
-import com.ars.YouBuy.order.dto.OrderItemResponse;
+import com.ars.YouBuy.order.rest.dto.dto.OrderItemResponse;
 import com.ars.YouBuy.order.entity.OrderItem;
 import com.ars.YouBuy.order.model.OrderItemModel;
 import org.springframework.stereotype.Component;

@@ -1,13 +1,15 @@
-package com.ars.YouBuy.shopingcart.dto;
+package com.ars.YouBuy.shopingcart.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
 @AllArgsConstructor
 @Builder
-public class ShoppingCartItemResponse {
+@NoArgsConstructor
+public class CartItemModel {
     private Integer id;
     private Integer quantity;
     private Integer productId;

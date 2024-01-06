@@ -1,6 +1,6 @@
 package com.ars.YouBuy.category.mapper;
 
-import com.ars.YouBuy.category.dto.CategoryResponse;
+import com.ars.YouBuy.category.rest.dto.dto.CategoryResponse;
 import com.ars.YouBuy.category.entity.Category;
 import com.ars.YouBuy.category.model.CategoryModel;
 import org.springframework.stereotype.Component;
@@ -29,7 +29,7 @@ public class CategoryMapper {
                 .build();
     }
 
-    public CategoryResponse modelToDto(CategoryModel category) {
+    public static CategoryResponse modelToDto(CategoryModel category) {
         return CategoryResponse.builder()
                 .id(category.getId())
                 .name(category.getName())

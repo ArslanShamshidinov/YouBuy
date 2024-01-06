@@ -14,6 +14,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.Date;
+import java.util.Objects;
 
 @Service
 public class FileStorageService {
@@ -31,13 +32,13 @@ public class FileStorageService {
     }
 
     public String storeFile(MultipartFile file) throws FileNotFoundException {
-        String name = StringUtils.cleanPath(file.getOriginalFilename().split("\\.")[0]);
+        String name = StringUtils.cleanPath(Objects.requireNonNull(file.getOriginalFilename()).split("\\.")[0]);
         String type = StringUtils.cleanPath(file.getOriginalFilename().split("\\.")[1]);
         String fileName = name + new Date().getTime() + "." + type;
 
         try {
             if (fileName.contains("..")) {
-                throw new FileNotFoundException("Sorry! Filename conatins invalid path sequence " + fileName);
+                throw new FileNotFoundException("Sorry! Filename contains invalid path sequence " + fileName);
             }
 
             Path targetLocation = this.fileStorageLocation.resolve(fileName);
@@ -51,13 +52,13 @@ public class FileStorageService {
     }
 
     public void deleteFile(String fileName) throws FileNotFoundException {
-        try{
+        try {
             Path filePath = this.fileStorageLocation.resolve(fileName).normalize();
             Files.deleteIfExists(filePath);
-        }catch (MalformedURLException ex){
-            throw new FileNotFoundException("File not found "+ fileName);
-        }catch (IOException ex){
-            throw new IllegalArgumentException("File couldn't not be deleted "+ fileName);
+        } catch (MalformedURLException ex) {
+            throw new FileNotFoundException("File not found " + fileName);
+        } catch (IOException ex) {
+            throw new IllegalArgumentException("File couldn't not be deleted " + fileName);
         }
     }
 

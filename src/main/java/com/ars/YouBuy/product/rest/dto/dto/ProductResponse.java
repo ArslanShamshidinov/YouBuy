@@ -1,4 +1,4 @@
-package com.ars.YouBuy.product.dto;
+package com.ars.YouBuy.product.rest.dto.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

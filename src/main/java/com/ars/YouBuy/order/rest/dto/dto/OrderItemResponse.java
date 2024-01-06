@@ -1,14 +1,17 @@
-package com.ars.YouBuy.shopingcart.model;
+package com.ars.YouBuy.order.rest.dto.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 
-@Getter
+import java.math.BigDecimal;
+
 @AllArgsConstructor
+@Getter
 @Builder
-public class ShoppingCartItemModel {
+public class OrderItemResponse {
     private Integer id;
     private Integer quantity;
+    private BigDecimal price;
     private Integer productId;
 }

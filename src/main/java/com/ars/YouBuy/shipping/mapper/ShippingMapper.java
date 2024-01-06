@@ -1,6 +1,6 @@
 package com.ars.YouBuy.shipping.mapper;
 
-import com.ars.YouBuy.shipping.dto.ShippingResponse;
+import com.ars.YouBuy.shipping.rest.dto.dto.ShippingResponse;
 import com.ars.YouBuy.shipping.entity.Shipping;
 import com.ars.YouBuy.shipping.model.ShippingModel;
 import org.springframework.stereotype.Component;
@@ -28,7 +28,7 @@ public class ShippingMapper {
                 .build();
     }
 
-    public ShippingResponse modelToDto(ShippingModel shipping){
+    public static ShippingResponse modelToDto(ShippingModel shipping){
         return ShippingResponse.builder()
                 .id(shipping.getId())
                 .name(shipping.getName())

@@ -1,6 +1,6 @@
 package com.ars.YouBuy.product.mapper;
 
-import com.ars.YouBuy.product.dto.ProductResponse;
+import com.ars.YouBuy.product.rest.dto.dto.ProductResponse;
 import com.ars.YouBuy.product.entity.Product;
 import com.ars.YouBuy.product.model.ProductModel;
 import org.springframework.stereotype.Component;

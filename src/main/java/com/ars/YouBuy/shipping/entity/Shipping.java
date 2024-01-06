@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "shipping")
 @Getter
-@AllArgsConstructor 
-@Builder 
+@AllArgsConstructor
+@Builder
 @NoArgsConstructor
 public class Shipping {
 

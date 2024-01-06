@@ -1,4 +1,4 @@
-package com.ars.YouBuy.order.dto;
+package com.ars.YouBuy.order.rest.dto.dto;
 
 import com.ars.YouBuy.order.entity.OrderItem;
 import lombok.*;

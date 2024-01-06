@@ -3,6 +3,7 @@ package com.ars.YouBuy.shopingcart.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.ZonedDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -10,15 +11,19 @@ import java.util.Set;
 @Table(name = "shopping_cart")
 @AllArgsConstructor
 @Builder
+@NoArgsConstructor
 @Getter
-public class ShoppingCart {
+@Setter
+public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(name = "created", nullable = false)
+    private ZonedDateTime created;
+
     @OneToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "cart_item", joinColumns = @JoinColumn(name = "cart_id"),
-            inverseJoinColumns = @JoinColumn(name = "item_id"))
+    @JoinTable(name = "cart_item", joinColumns = @JoinColumn(name = "cart_id"), inverseJoinColumns = @JoinColumn(name = "card_item_id"))
     @Builder.Default
-    private Set<ShoppingCartItem> items = new HashSet<>();
+    private Set<CartItem> items = new HashSet<>();
 }

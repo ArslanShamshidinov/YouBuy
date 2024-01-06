@@ -3,7 +3,7 @@ package com.ars.YouBuy.product.rest.controller;
 import com.ars.YouBuy.category.model.CategoryModel;
 import com.ars.YouBuy.category.service.CategoryService;
 import com.ars.YouBuy.common.service.FileStorageService;
-import com.ars.YouBuy.product.dto.ProductResponse;
+import com.ars.YouBuy.product.rest.dto.dto.ProductResponse;
 import com.ars.YouBuy.product.mapper.ProductMapper;
 import com.ars.YouBuy.product.model.ProductModel;
 import com.ars.YouBuy.product.service.ProductService;
@@ -38,7 +38,7 @@ public class ProductController {
 
     }
 
-    @PostMapping("/")
+    @PostMapping("/create")
     public void addProduct(@RequestParam("file") MultipartFile file, @RequestParam("name") String name, @RequestParam BigDecimal price, @RequestParam Integer categoryId) throws FileNotFoundException {
 
         CategoryModel category = categoryService.findById(categoryId).orElseThrow(() -> new IllegalArgumentException("Invalid category is selected"));
@@ -50,7 +50,7 @@ public class ProductController {
 
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/update/{id}")
     public void updateProduct(@PathVariable("id") Integer id, @RequestParam(value = "file", required = false) MultipartFile file, @RequestParam("name") String name, @RequestParam("price") BigDecimal price, @RequestParam("categoryId") Integer categoryId) throws FileNotFoundException {
 
         CategoryModel category = categoryService.findById(categoryId).orElseThrow(() -> new IllegalArgumentException("Invalid category is selected"));
