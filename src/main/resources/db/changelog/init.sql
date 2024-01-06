@@ -58,18 +58,18 @@ CREATE TABLE `youbuy`.`order_item` (
         ON DELETE NO ACTION
         ON UPDATE NO ACTION);
 
--- changeset Arslan-Shamshidinov:create-shopping-cart-table
+-- changeset Arslan-Shamshidinov:create-cart-table
 -- preconditions onFail:MARK_RAN
--- precondition-sql-check expectedResult:0 select count(*) from information_schema.TABLES WHERE TABLE_SCHEMA = 'youbuy' AND TABLE_NAME='shopping_cart';
-CREATE TABLE `youbuy`.`shopping_cart` (
+-- precondition-sql-check expectedResult:0 select count(*) from information_schema.TABLES WHERE TABLE_SCHEMA = 'youbuy' AND TABLE_NAME='cart';
+CREATE TABLE `youbuy`.`cart` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `created` DATETIME NOT NULL,
   PRIMARY KEY (`id`));
 
--- changeset Arslan-Shamshidinov:create-shopping-cart-item-table
+-- changeset Arslan-Shamshidinov:create-cart-item-table
 -- preconditions onFail:MARK_RAN
--- precondition-sql-check expectedResult:0 select count(*) from information_schema.TABLES WHERE TABLE_SCHEMA = 'youbuy' AND TABLE_NAME='shopping_cart_item';
-CREATE TABLE `youbuy`.`shopping_cart_item` (
+-- precondition-sql-check expectedResult:0 select count(*) from information_schema.TABLES WHERE TABLE_SCHEMA = 'youbuy' AND TABLE_NAME='cart_item';
+CREATE TABLE `youbuy`.`cart_item` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `quantity` INT NOT NULL,
   `product_id` INT NOT NULL,
@@ -77,20 +77,20 @@ CREATE TABLE `youbuy`.`shopping_cart_item` (
 
 -- changeset Arslan-Shamshidinov:create-cart-items-table
 -- preconditions onFail:MARK_RAN
--- precondition-sql-check expectedResult:0 select count(*) from information_schema.TABLES WHERE TABLE_SCHEMA = 'youbuy' AND TABLE_NAME='cart_items';
- CREATE TABLE `youbuy`.`cart_items` (
-      `cart_item_id` INT NOT NULL,
+-- precondition-sql-check expectedResult:0 select count(*) from information_schema.TABLES WHERE TABLE_SCHEMA = 'youbuy' AND TABLE_NAME='cart_cart_items';
+ CREATE TABLE `youbuy`.`cart_cart_items` (
       `cart_id` INT NOT NULL,
-      PRIMARY KEY (`cart_item_id`, `cart_id`),
+      `cart_item_id` INT NOT NULL,
+      PRIMARY KEY (`cart_id`, `cart_item_id`),
       INDEX `cart_id_idx` (`cart_id` ASC) VISIBLE,
-      CONSTRAINT `cart_item_id`
-        FOREIGN KEY (`cart_item_id`)
-        REFERENCES `youbuy`.`shopping_cart_item` (`id`)
-        ON DELETE NO ACTION
-        ON UPDATE NO ACTION,
       CONSTRAINT `cart_id`
         FOREIGN KEY (`cart_id`)
-        REFERENCES `youbuy`.`shopping_cart` (`id`)
+        REFERENCES `youbuy`.`cart` (`id`)
+        ON DELETE NO ACTION
+        ON UPDATE NO ACTION,
+      CONSTRAINT `cart_item_id`
+        FOREIGN KEY (`cart_item_id`)
+        REFERENCES `youbuy`.`cart_item` (`id`)
         ON DELETE NO ACTION
         ON UPDATE NO ACTION);
 
